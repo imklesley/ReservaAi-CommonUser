@@ -31,7 +31,7 @@ dependencies:
 #
 #  Algum desses estão fazendo o scroll do app parar de funcionar
 #  flutter_launcher_icons: ^0.7.5
-#  flutter_launcher_name: ^0.0.1
+  flutter_launcher_name: ^0.0.1
 #  flutter_native_splash: ^0.1.9
 
   font_awesome_flutter: ^8.8.1
@@ -39,13 +39,11 @@ dependencies:
   cloud_firestore: ^0.13.7
   firebase_messaging: ^6.0.16
   firebase_analytics: ^5.0.16
-  carousel_pro: ^1.0.0
   transparent_image: ^1.0.0
   scoped_model: ^1.0.1
   path_provider: ^1.6.11
   firebase_auth: ^0.16.1
   url_launcher: ^5.5.0
-  flutter_svg: ^0.18.0
   email_validator: ^1.0.5
   google_fonts: ^1.1.0
   cpfcnpj: ^1.0.3
