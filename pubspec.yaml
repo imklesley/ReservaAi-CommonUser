@@ -30,7 +30,7 @@ dependencies:
   cupertino_icons: ^0.1.3
 #
 #  Algum desses estão fazendo o scroll do app parar de funcionar
-#  flutter_launcher_icons: ^0.7.5
+  flutter_launcher_icons: ^0.7.5
   flutter_launcher_name: ^0.0.1
 #  flutter_native_splash: ^0.1.9
 
@@ -57,7 +57,7 @@ dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/images/logotypes/icon_launcher/azul-laranja-iconlauncher.png"
+  image_path: "assets/images/logotypes/icon_launcher/brand400x400.png"
   adaptive_icon_background: "05293c"
 
 
