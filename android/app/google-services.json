@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "468955204241",
+    "firebase_url": "https://reserva-ai.firebaseio.com",
+    "project_id": "reserva-ai",
+    "storage_bucket": "reserva-ai.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:468955204241:android:ddd505c10f7bc5bc2a8d30",
+        "android_client_info": {
+          "package_name": "com.goncalves.reserva_ai_common_user"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "468955204241-f0p43c0uf40i6n41n7ojcj6ucloe2isb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.goncalves.reserva_ai_common_user",
+            "certificate_hash": "1a472caed50cbdc88de8c3896ede0794a5f195af"
+          }
+        },
+        {
+          "client_id": "468955204241-rgfelnu7r8bogk0qcnsnani1ctq7gei1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnchMQUO0b2DzXH8Pex4ruJ3xtF2-0Ihk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "468955204241-rgfelnu7r8bogk0qcnsnani1ctq7gei1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
