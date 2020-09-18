@@ -1,4 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:double_back_to_close_app/double_back_to_close_app.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:reserva_ai_common_user/screens/pages/home/home_page.dart';
@@ -14,7 +16,6 @@ class ScreenController extends StatefulWidget {
 }
 
 class _ScreenControllerState extends State<ScreenController> {
-
   //Lista de páginas do app
   List<Widget> _screenPages = [
     SearchPage(),
@@ -148,7 +149,20 @@ class _ScreenControllerState extends State<ScreenController> {
     return Scaffold(
         backgroundColor: Colors.white,
         drawer: CustomDrawer(_pageController, _screenPages),
-        body: _pages,
+        body: DoubleBackToCloseApp(
+          child: _pages,
+          snackBar: const SnackBar(duration: Duration(seconds: 1),
+            backgroundColor: Colors.black54,
+            content: Text(
+              'Pressione "voltar" mais uma vez para sair!',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15),
+            ),
+          ),
+        ),
         bottomNavigationBar: customCurvedNavBar());
   }
 }

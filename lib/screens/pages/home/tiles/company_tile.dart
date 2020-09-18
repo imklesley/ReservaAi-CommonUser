@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../company_page.dart';
+
 class CompanyTile extends StatelessWidget {
   final String image;
   final String companyName;
@@ -8,6 +10,7 @@ class CompanyTile extends StatelessWidget {
   final IconData iconCategory;
   final String location;
   final double rating;
+  final String tag;
 
   CompanyTile(
       {this.image,
@@ -15,10 +18,11 @@ class CompanyTile extends StatelessWidget {
       this.category,
       this.iconCategory,
       this.location,
-      this.rating});
+      this.rating,
+      this.tag});
 
-  Widget stars(nota) {
-    double sizeIcon = 15;
+  Widget stars(nota, {bool companyPage = false}) {
+    double sizeIcon = companyPage ? 30 : 20;
 
     //Estrelas inteiras
     int inteiras = nota.toInt();
@@ -125,7 +129,20 @@ class CompanyTile extends StatelessWidget {
           )),
       highlightColor: Colors.black12,
       borderRadius: BorderRadius.all(Radius.circular(20)),
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => CompanyPage(
+                    tag,
+                    image,
+                    companyName,
+                    category,
+                    iconCategory,
+                    location,
+                    rating,
+                    stars(rating, companyPage: true))));
+      },
     );
   }
 }

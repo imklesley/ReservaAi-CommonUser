@@ -1,8 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:reserva_ai_common_user/screens/pages/home/tiles/company_tile.dart';
-import 'package:reserva_ai_common_user/screens/pages/home/tiles/company_tile_home.dart';
+import 'package:reserva_ai_common_user/screens/pages/home/tiles/company_tile_promotions.dart';
 import 'package:reserva_ai_common_user/screens/pages/home/widgets/custom_sliver_appbar.dart';
 import 'package:reserva_ai_common_user/screens/widgets/general_filters.dart';
 
@@ -24,55 +25,71 @@ class _HomePageState extends State<HomePage> {
             delegate: CustomSliverAppBar(expandedHeight: 290),
           ),
 
-          SliverToBoxAdapter(child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 30, 0, 0),
-            child: Text('Promoções',style: TextStyle(color: Theme.of(context).primaryColor,fontSize: 35,fontWeight: FontWeight.bold),),
-          ),),
-          SliverToBoxAdapter(child: Padding(
-            padding: const EdgeInsets.fromLTRB(15, 5, 15, 0),
-            child: SizedBox(height: 220,
-              width: 230,
-              child: GridView(
-                scrollDirection: Axis.horizontal,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 1,
-                    mainAxisSpacing: 10.0,
-                    childAspectRatio: 0.70),
-                //Tamanho dos botões de filtro altura/largura
-                children: [CompanyTileHome(
-                  image: 'assets/fake_data/images/barbearia.jpg',
-                  companyName: 'Barbearia Burguês Safado',
-                  category: 'Restaurante',
-                  iconCategory: Icons.local_dining,
-                  location: 'Plano Diretor Sul, Palmas - TO',
-                  rating: 3.5,
-                ),CompanyTileHome(
-                  image: 'assets/fake_data/images/restaurant.jpg',
-                  companyName: 'Restaurante Klesliano',
-                  category: 'Restaurante',
-                  iconCategory: Icons.local_dining,
-                  location: 'Plano Diretor Sul, Palmas - TO',
-                  rating: 3.5,
-                ),
-                  CompanyTileHome(
-                    image: 'assets/fake_data/images/academia.jpeg',
-                    companyName: 'Academia do Mateus',
-                    iconCategory:Icons.transfer_within_a_station,
-                    category: 'Restaurante',
-                    location: 'Plano Diretor Sul, Palmas - TO',
-                    rating: 4.5,
-                  ),
-                  CompanyTileHome(
-                    image: 'assets/fake_data/images/salon.jpg',
-                    companyName: 'Salão Jacudá',
-                    iconCategory:Icons.transfer_within_a_station,
-                    category: 'Salão',
-                    location: 'Plano Diretor Sul, Palmas - TO',
-                    rating: 5.0,
-                  )]
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(20, 30, 0, 0),
+              child: Text(
+                'Promoções',
+                style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold),
               ),
             ),
-          ),),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(15, 5, 15, 0),
+              child: SizedBox(
+                height: 246,
+                child: GridView(
+                    scrollDirection: Axis.horizontal,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 1,
+                        mainAxisSpacing: 10.0,
+                        childAspectRatio: 0.80),
+                    //Tamanho dos botões de filtro altura/largura
+                    children: [
+                      CompanyTilePromotions(
+                        tag: '1',
+                        image: 'assets/fake_data/images/barbearia.jpg',
+                        companyName: 'Barbearia Burguês Safado',
+                        category: 'Restaurante',
+                        iconCategory: Icons.local_dining,
+                        location: 'Plano Diretor Sul, Palmas - TO',
+                        rating: 3.5,
+                      ),
+                      CompanyTilePromotions(
+                        tag: '2',
+                        image: 'assets/fake_data/images/restaurant.jpg',
+                        companyName: 'Madero Capim Dourado Shopping',
+                        category: 'Restaurante',
+                        iconCategory: Icons.local_dining,
+                        location: 'Plano Diretor Sul, Palmas - TO',
+                        rating: 3.5,
+                      ),
+                      CompanyTilePromotions(
+                        tag: '3',
+                        image: 'assets/fake_data/images/academia.jpeg',
+                        companyName: 'Academia do Mateus',
+                        iconCategory: Icons.transfer_within_a_station,
+                        category: 'Restaurante',
+                        location: 'Plano Diretor Sul, Palmas - TO',
+                        rating: 4.5,
+                      ),
+                      CompanyTilePromotions(
+                        tag: '4',
+                        image: 'assets/fake_data/images/salon.jpg',
+                        companyName: 'Salão Jacudá',
+                        iconCategory: Icons.transfer_within_a_station,
+                        category: 'Salão',
+                        location: 'Plano Diretor Sul, Palmas - TO',
+                        rating: 5.0,
+                      )
+                    ]),
+              ),
+            ),
+          ),
 
           //Filtros gerais
           SliverToBoxAdapter(
@@ -91,6 +108,7 @@ class _HomePageState extends State<HomePage> {
               crossAxisCount: 2,
               children: <Widget>[
                 CompanyTile(
+                  tag: Random().nextInt(1000).toString(),
                   image: 'assets/fake_data/images/restaurant.jpg',
                   companyName: 'Restaurante Klesliano',
                   category: 'Restaurante',
@@ -99,6 +117,7 @@ class _HomePageState extends State<HomePage> {
                   rating: 3.5,
                 ),
                 CompanyTile(
+                  tag: Random().nextInt(1000).toString(),
                   image: 'assets/fake_data/images/barbearia.jpg',
                   companyName: 'Barbearia Burguês Safado',
                   category: 'Restaurante',
@@ -107,21 +126,25 @@ class _HomePageState extends State<HomePage> {
                   rating: 3.5,
                 ),
                 CompanyTile(
+                  tag: Random().nextInt(1000).toString(),
                   image: 'assets/fake_data/images/academia.jpeg',
                   companyName: 'Academia do Mateus',
-                  iconCategory:Icons.transfer_within_a_station,
+                  iconCategory: Icons.transfer_within_a_station,
                   category: 'Restaurante',
                   location: 'Plano Diretor Sul, Palmas - TO',
                   rating: 4.5,
                 ),
                 CompanyTile(
+                  tag: Random().nextInt(1000).toString(),
                   image: 'assets/fake_data/images/salon.jpg',
                   companyName: 'Salão Jacudá',
-                  iconCategory:Icons.transfer_within_a_station,
+                  iconCategory: Icons.transfer_within_a_station,
                   category: 'Salão',
                   location: 'Plano Diretor Sul, Palmas - TO',
                   rating: 5.0,
-                ),CompanyTile(
+                ),
+                CompanyTile(
+                  tag: Random().nextInt(1000).toString(),
                   image: 'assets/fake_data/images/restaurant.jpg',
                   companyName: 'Restaurante Klesliano',
                   category: 'Restaurante',
@@ -130,21 +153,25 @@ class _HomePageState extends State<HomePage> {
                   rating: 3.5,
                 ),
                 CompanyTile(
+                  tag: Random().nextInt(1000).toString(),
                   image: 'assets/fake_data/images/academia.jpeg',
                   companyName: 'Academia do Mateus',
-                  iconCategory:Icons.transfer_within_a_station,
+                  iconCategory: Icons.transfer_within_a_station,
                   category: 'Restaurante',
                   location: 'Plano Diretor Sul, Palmas - TO',
                   rating: 4.5,
                 ),
                 CompanyTile(
+                  tag: Random().nextInt(1000).toString(),
                   image: 'assets/fake_data/images/salon.jpg',
                   companyName: 'Salão Jacudá',
-                  iconCategory:Icons.transfer_within_a_station,
+                  iconCategory: Icons.transfer_within_a_station,
                   category: 'Salão',
                   location: 'Plano Diretor Sul, Palmas - TO',
                   rating: 5.0,
-                ),CompanyTile(
+                ),
+                CompanyTile(
+                  tag: Random().nextInt(1000).toString(),
                   image: 'assets/fake_data/images/restaurant.jpg',
                   companyName: 'Restaurante Klesliano',
                   category: 'Restaurante',
@@ -153,21 +180,25 @@ class _HomePageState extends State<HomePage> {
                   rating: 3.5,
                 ),
                 CompanyTile(
+                  tag: Random().nextInt(1000).toString(),
                   image: 'assets/fake_data/images/academia.jpeg',
                   companyName: 'Academia do Mateus',
-                  iconCategory:Icons.transfer_within_a_station,
+                  iconCategory: Icons.transfer_within_a_station,
                   category: 'Restaurante',
                   location: 'Plano Diretor Sul, Palmas - TO',
                   rating: 4.5,
                 ),
                 CompanyTile(
+                  tag: Random().nextInt(1000).toString(),
                   image: 'assets/fake_data/images/salon.jpg',
                   companyName: 'Salão Jacudá',
-                  iconCategory:Icons.transfer_within_a_station,
+                  iconCategory: Icons.transfer_within_a_station,
                   category: 'Salão',
                   location: 'Plano Diretor Sul, Palmas - TO',
                   rating: 5.0,
-                ),CompanyTile(
+                ),
+                CompanyTile(
+                  tag: Random().nextInt(1000).toString(),
                   image: 'assets/fake_data/images/restaurant.jpg',
                   companyName: 'Restaurante Klesliano',
                   category: 'Restaurante',
@@ -176,21 +207,25 @@ class _HomePageState extends State<HomePage> {
                   rating: 3.5,
                 ),
                 CompanyTile(
+                  tag: Random().nextInt(1000).toString(),
                   image: 'assets/fake_data/images/academia.jpeg',
                   companyName: 'Academia do Mateus',
-                  iconCategory:Icons.transfer_within_a_station,
+                  iconCategory: Icons.transfer_within_a_station,
                   category: 'Restaurante',
                   location: 'Plano Diretor Sul, Palmas - TO',
                   rating: 4.5,
                 ),
                 CompanyTile(
+                  tag: Random().nextInt(1000).toString(),
                   image: 'assets/fake_data/images/salon.jpg',
                   companyName: 'Salão Jacudá',
-                  iconCategory:Icons.transfer_within_a_station,
+                  iconCategory: Icons.transfer_within_a_station,
                   category: 'Salão',
                   location: 'Plano Diretor Sul, Palmas - TO',
                   rating: 5.0,
-                ),CompanyTile(
+                ),
+                CompanyTile(
+                  tag: Random().nextInt(1000).toString(),
                   image: 'assets/fake_data/images/restaurant.jpg',
                   companyName: 'Restaurante Klesliano',
                   category: 'Restaurante',
@@ -199,21 +234,25 @@ class _HomePageState extends State<HomePage> {
                   rating: 3.5,
                 ),
                 CompanyTile(
+                  tag: Random().nextInt(1000).toString(),
                   image: 'assets/fake_data/images/academia.jpeg',
                   companyName: 'Academia do Mateus',
-                  iconCategory:Icons.transfer_within_a_station,
+                  iconCategory: Icons.transfer_within_a_station,
                   category: 'Restaurante',
                   location: 'Plano Diretor Sul, Palmas - TO',
                   rating: 4.5,
                 ),
                 CompanyTile(
+                  tag: Random().nextInt(1000).toString(),
                   image: 'assets/fake_data/images/salon.jpg',
                   companyName: 'Salão Jacudá',
-                  iconCategory:Icons.transfer_within_a_station,
+                  iconCategory: Icons.transfer_within_a_station,
                   category: 'Salão',
                   location: 'Plano Diretor Sul, Palmas - TO',
                   rating: 5.0,
-                ),CompanyTile(
+                ),
+                CompanyTile(
+                  tag: Random().nextInt(1000).toString(),
                   image: 'assets/fake_data/images/restaurant.jpg',
                   companyName: 'Restaurante Klesliano',
                   category: 'Restaurante',
@@ -222,17 +261,19 @@ class _HomePageState extends State<HomePage> {
                   rating: 3.5,
                 ),
                 CompanyTile(
+                  tag: Random().nextInt(1000).toString(),
                   image: 'assets/fake_data/images/academia.jpeg',
                   companyName: 'Academia do Mateus',
-                  iconCategory:Icons.transfer_within_a_station,
+                  iconCategory: Icons.transfer_within_a_station,
                   category: 'Restaurante',
                   location: 'Plano Diretor Sul, Palmas - TO',
                   rating: 4.5,
                 ),
                 CompanyTile(
+                  tag: Random().nextInt(1000).toString(),
                   image: 'assets/fake_data/images/salon.jpg',
                   companyName: 'Salão Jacudá',
-                  iconCategory:Icons.transfer_within_a_station,
+                  iconCategory: Icons.transfer_within_a_station,
                   category: 'Salão',
                   location: 'Plano Diretor Sul, Palmas - TO',
                   rating: 5.0,

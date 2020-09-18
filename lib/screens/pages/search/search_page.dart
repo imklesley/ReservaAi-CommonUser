@@ -29,24 +29,25 @@ class _SearchPageState extends State<SearchPage> {
             child: Padding(
               padding: const EdgeInsets.fromLTRB(25, 110, 25, 5),
               child: TypeAheadField(
+
                 hideOnEmpty: true,
                 textFieldConfiguration: TextFieldConfiguration(
+                  textAlign: TextAlign.center,
                     autofocus: false,
-                    style: DefaultTextStyle.of(context)
-                        .style
-                        .copyWith(fontStyle: FontStyle.italic),
-                    decoration: InputDecoration(
+                    style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.w600,),
+                    cursorColor: Colors.white,
+                    decoration: InputDecoration(suffixIcon: Icon(Icons.search,color: Colors.white,),
                       labelText: 'Pesquisar',
-                      labelStyle: TextStyle(
+                      labelStyle: TextStyle(decoration: TextDecoration.none,
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 20),
                       border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)),
+                          borderSide: BorderSide(color: Colors.white),borderRadius: BorderRadius.circular(50)),
                       enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)),
+                          borderSide: BorderSide(color: Colors.white),borderRadius: BorderRadius.circular(50)),
                       focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)),
+                          borderSide: BorderSide(color: Colors.white),borderRadius: BorderRadius.circular(50)),
                     )),
                 suggestionsCallback: (pattern) async {
                   return await BackendService.getSuggestions(pattern);

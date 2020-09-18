@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
                 primaryColor: Color.fromRGBO(5, 41, 60, 1),
                 primarySwatch: Colors.deepOrange,
                 cursorColor: Color.fromRGBO(5, 41, 60, 1),
+
               ),
             );
           },
