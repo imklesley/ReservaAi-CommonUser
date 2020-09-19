@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 30, 0, 0),
               child: Text(
-                'Promoções',
+                'Recomendados',
                 style: TextStyle(
                     color: Theme.of(context).primaryColor,
                     fontSize: 35,
@@ -41,13 +41,13 @@ class _HomePageState extends State<HomePage> {
             child: Padding(
               padding: const EdgeInsets.fromLTRB(15, 5, 15, 0),
               child: SizedBox(
-                height: 246,
+                height: 226,
                 child: GridView(
                     scrollDirection: Axis.horizontal,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 1,
                         mainAxisSpacing: 10.0,
-                        childAspectRatio: 0.80),
+                        childAspectRatio: 0.75),
                     //Tamanho dos botões de filtro altura/largura
                     children: [
                       CompanyTilePromotions(
@@ -107,6 +107,7 @@ class _HomePageState extends State<HomePage> {
               mainAxisSpacing: 10,
               crossAxisCount: 2,
               children: <Widget>[
+                //Coloquei uma tag aleatória para usar o random
                 CompanyTile(
                   tag: Random().nextInt(1000).toString(),
                   image: 'assets/fake_data/images/restaurant.jpg',

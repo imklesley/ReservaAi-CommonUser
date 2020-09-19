@@ -46,6 +46,9 @@ class _CompanyPageState extends State<CompanyPage> {
 
   @override
   Widget build(BuildContext context) {
+
+
+     Size _size = MediaQuery.of(context).size;
     return Scaffold(
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
@@ -56,7 +59,9 @@ class _CompanyPageState extends State<CompanyPage> {
                   tag: tag,
                   child: GestureDetector(
                     onPanUpdate: (details) {
-                      if (details.delta.dy >= 7) {
+                      //Coloquei usando mediaquery pra ajustar a sensibilidade a cada aparelho
+                      if (details.delta.dy >= _size.height*0.007) {
+
                         //Se desceu 7 px logo ele sai da page da empresa
                         // É preciso tratar isso caso o usuário tenha começado a preencher algo, "Tem certeza que deseja voltar"
                         Navigator.pop(context);

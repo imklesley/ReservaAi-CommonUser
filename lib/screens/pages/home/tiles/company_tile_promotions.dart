@@ -59,7 +59,7 @@ class CompanyTilePromotions extends StatelessWidget {
       tag: tag,
       child: FlatButton(
         padding: EdgeInsets.zero,
-        child: Card(
+        child: Card(margin: EdgeInsets.all(3),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(15)),
             ),
@@ -94,9 +94,10 @@ class CompanyTilePromotions extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 8.0),
                         child: Text(
                           companyName,
+                          overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                               color: Colors.black,
-                              fontSize: 20,
+                              fontSize: 17,
                               fontWeight: FontWeight.bold),
                           textAlign: TextAlign.left,
                         ),
@@ -106,6 +107,7 @@ class CompanyTilePromotions extends StatelessWidget {
                           Icon(iconCategory, size: 16, color: Colors.black45),
                           Text(
                             category,
+                            overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                                 color: Colors.black45,
                                 fontSize: 12,
@@ -120,6 +122,7 @@ class CompanyTilePromotions extends StatelessWidget {
                               size: 16, color: Colors.black45),
                           Text(
                             location,
+                            overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                                 color: Colors.black45,
                                 fontSize: 12,

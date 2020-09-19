@@ -31,7 +31,7 @@ class _CompanyTabsState extends State<CompanyTabs> {
               crossAxisCount: 1,
               mainAxisSpacing: 10.0,
               crossAxisSpacing: 10,
-              childAspectRatio: 0.28),
+              childAspectRatio: 0.32),
           //Tamanho dos botões de filtro altura/largura
           children: _CompanyTabs.map((elemento) {
             return Padding(
