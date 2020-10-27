@@ -22,53 +22,51 @@ class _CompanyTabsState extends State<CompanyTabs> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      SizedBox(
-        height: 40,
-        child: GridView(
-          scrollDirection: Axis.horizontal,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 1,
-              mainAxisSpacing: 10.0,
-              crossAxisSpacing: 10,
-              childAspectRatio: 0.32),
-          //Tamanho dos botões de filtro altura/largura
-          children: _CompanyTabs.map((elemento) {
-            return Padding(
-              padding: const EdgeInsets.only(left: 4, bottom: 8.0, right: 4),
-              child: RaisedButton(
-                highlightColor: Colors.deepOrange,
-                elevation: 5,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-                child: Text(
-                  elemento,
-                  style: TextStyle(
-                      color:
-                      _marcado == elemento ? Colors.white : Colors.grey,
-                      fontSize: 12.0,
-                      fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
-                ),
-                color:
-                _marcado == elemento ? Colors.deepOrange : Colors.white,
-                onPressed: elemento == _marcado
-                    ? () {
-                  setState(() {
-                    //Realização da chamada para o filtro
-                  });
-                  //Realiza buscas no filtro
-                }
-                    : () {
-                  setState(() {
-                    _marcado = elemento;
-                  });
-                },
+    return SizedBox(
+      height: 40,
+      child: GridView(
+        scrollDirection: Axis.horizontal,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 1,
+            mainAxisSpacing: 10.0,
+            crossAxisSpacing: 10,
+            childAspectRatio: 0.32),
+        //Tamanho dos botões de filtro altura/largura
+        children: _CompanyTabs.map((elemento) {
+          return Padding(
+            padding: const EdgeInsets.only(left: 4, bottom: 8.0, right: 4),
+            child: RaisedButton(
+              highlightColor: Colors.deepOrange,
+              elevation: 5,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10))),
+              child: Text(
+                elemento,
+                style: TextStyle(
+                    color:
+                    _marcado == elemento ? Colors.white : Colors.grey,
+                    fontSize: 12.0,
+                    fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
               ),
-            );
-          }).toList(),
-        ),
+              color:
+              _marcado == elemento ? Colors.deepOrange : Colors.white,
+              onPressed: elemento == _marcado
+                  ? () {
+                setState(() {
+                  //Realização da chamada para o filtro
+                });
+                //Realiza buscas no filtro
+              }
+                  : () {
+                setState(() {
+                  _marcado = elemento;
+                });
+              },
+            ),
+          );
+        }).toList(),
       ),
-    ]);
+    );
   }
 }

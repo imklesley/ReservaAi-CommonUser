@@ -17,11 +17,16 @@ class UserSettingsPage extends StatelessWidget {
               color: Colors.white,
             ),
             Container(
-              color: Color.fromRGBO(253, 91, 62, 1),
-              height: 110,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(30),
+                    bottomRight: Radius.circular(30)),
+                color: Theme.of(context).primaryColor,
+              ),
+              height: 80,
             ),
             Positioned(
-              top: 31,
+              top: 16,
               left: 4,
               child: IconButton(
                 highlightColor: Colors.deepOrange,
@@ -34,7 +39,7 @@ class UserSettingsPage extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 50),
+              padding: const EdgeInsets.only(top: 30),
               child:
                   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Column(children: [
@@ -42,31 +47,43 @@ class UserSettingsPage extends StatelessWidget {
                       shape: CircleBorder(
                           side: BorderSide(color: Colors.white, width: 3)),
                       elevation: 30,
-                      child: CircleAvatar(
-                        backgroundColor: Theme.of(context).primaryColor,
-                        radius: 70,
-                        child: Icon(
-                          Icons.person,
-                          size: 100,
-                          color: Colors.white,
-                        ),
-                      )),
+                      child: model.isLoggedIn() &&
+                              (model.userData['profile_picture'] != null &&
+                                  model.userData['profile_picture'] != '')
+                          ? CircleAvatar(
+                              backgroundColor: Theme.of(context).primaryColor,
+                              radius: 70,
+                              backgroundImage: NetworkImage(
+                                  model.userData['profile_picture']),
+                            )
+                          : CircleAvatar(
+                              backgroundColor: Theme.of(context).highlightColor,
+                              radius: 70,
+                              child: Icon(
+                                Icons.person,
+                                size: 100,
+                                color: Colors.white,
+                              ),
+                            )),
                   SizedBox(
-                    height: 10,
+                    height: 5,
                   ),
                   Container(
-                    height: 30,
+                    height: 40,
                     child: model.isLoggedIn()
-                        ? Text(
-                            '${model.userData['name']}',
-                            style: TextStyle(
-                                color: Theme.of(context).primaryColor,
-                                fontWeight: FontWeight.w300,
-                                fontSize: 22.0),
+                        ? Center(
+                            child: Text(
+                              '${model.userData['name']}',
+                              style: TextStyle(
+                                  color: Theme.of(context).primaryColor,
+                                  fontWeight: FontWeight.w300,
+                                  fontSize: 22.0),
+                            ),
                           )
                         : FlatButton(
+                            highlightColor: Theme.of(context).primaryColor,
                             child: Align(
-                              alignment: Alignment.bottomLeft,
+                              alignment: Alignment.center,
                               child: Text(
                                 'Entre ou Cadastra-se',
                                 style: TextStyle(
@@ -243,46 +260,57 @@ class UserSettingsPage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Column(children: [FlatButton(
-                        color: Colors.white,
-                        child: Text(
-                          'Encerrar Acesso',
-                          style: TextStyle(
-                              color: Theme.of(context).primaryColor,
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        onPressed: () {
-                          if (model.isLoggedIn()) {
-                            SnackBar snack = SnackBar(
-                              duration: Duration(seconds: 2),
-                              content: Text(
-                                '${model.userData['name'].split(' ')[0]} sua sessão foi encerrada com sucesso !',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              backgroundColor: Colors.green,
-                            );
-                            model.signOut();
+                      Column(
+                        children: [
+                          FlatButton(
+                            color: Colors.white,
+                            child: Text(
+                              'Encerrar Acesso',
+                              style: TextStyle(
+                                  color: Theme.of(context).primaryColor,
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            onPressed: () {
+                              if (model.isLoggedIn()) {
+                                SnackBar snack = SnackBar(
+                                  duration: Duration(seconds: 2),
+                                  content: Text(
+                                    '${model.userData['name'].split(' ')[0]} sua sessão foi encerrada com sucesso !',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  backgroundColor: Colors.green,
+                                );
+                                model.signOut();
 
-                            //Fecha drawer
-                            Scaffold.of(context).openEndDrawer();
-                            //Caso tem algum outro snackbar remove
-                            Scaffold.of(context).removeCurrentSnackBar();
-                            //Mostra o novo snackbar do usuário
-                            Scaffold.of(context).showSnackBar(snack);
+                                //Fecha drawer
+                                Scaffold.of(context).openEndDrawer();
+                                //Caso tem algum outro snackbar remove
+                                Scaffold.of(context).removeCurrentSnackBar();
+                                //Mostra o novo snackbar do usuário
+                                Scaffold.of(context).showSnackBar(snack);
 
-                            Navigator.of(context)
-                                .popUntil((route) => route.isFirst);
-                          } else
-                            SystemChannels.platform.invokeMethod(
-                                'SystemNavigator.pop'); // A library Services permite darmos um pop no próprio app
-                        },
-                        highlightColor: Color.fromRGBO(253, 91, 62, 1),
-                      ),Text('Versão 0.8.0',style: TextStyle(color: Colors.grey,fontSize: 15,fontWeight: FontWeight.w400),)],)
+                                Navigator.of(context)
+                                    .popUntil((route) => route.isFirst);
+                              } else
+                                SystemChannels.platform.invokeMethod(
+                                    'SystemNavigator.pop'); // A library Services permite darmos um pop no próprio app
+                            },
+                            highlightColor: Color.fromRGBO(253, 91, 62, 1),
+                          ),
+                          Text(
+                            'Versão 0.8.0',
+                            style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w400),
+                          )
+                        ],
+                      )
                     ],
                   )),
             )

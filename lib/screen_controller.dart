@@ -2,7 +2,10 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:geocoder/geocoder.dart';
+import 'package:location/location.dart';
 import 'package:reserva_ai_common_user/screens/pages/home/home_page.dart';
 import 'package:reserva_ai_common_user/screens/pages/notifications/notifications_page.dart';
 import 'package:reserva_ai_common_user/screens/pages/schedules/schedules_page.dart';
@@ -18,7 +21,7 @@ class ScreenController extends StatefulWidget {
 class _ScreenControllerState extends State<ScreenController> {
   //Lista de páginas do app
   List<Widget> _screenPages = [
-    SearchPage(),
+    SearchPage('tab'),
     SchedulesPage(),
     HomePage(),
     NotificationsPage(),
@@ -96,6 +99,8 @@ class _ScreenControllerState extends State<ScreenController> {
 
   //Configuração bottomnavigator
   Widget customCurvedNavBar() {
+    // to hide only status bar:
+    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
     return CurvedNavigationBar(
         index: _page,
         animationDuration: Duration(milliseconds: 200),
@@ -139,6 +144,33 @@ class _ScreenControllerState extends State<ScreenController> {
         });
   }
 
+  Future<LocationData> getCoordenates() async {
+    Location location = new Location();
+
+    bool _serviceEnabled;
+    PermissionStatus _permissionGranted;
+    LocationData _locationData;
+
+    _serviceEnabled = await location.serviceEnabled();
+    if (!_serviceEnabled) {
+      _serviceEnabled = await location.requestService();
+      if (!_serviceEnabled) {
+        return _locationData;
+      }
+    }
+
+    _permissionGranted = await location.hasPermission();
+    if (_permissionGranted == PermissionStatus.denied) {
+      _permissionGranted = await location.requestPermission();
+      if (_permissionGranted != PermissionStatus.granted) {
+        return _locationData;
+      }
+    }
+
+    _locationData = await location.getLocation();
+    return _locationData;
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget _pages = PageView(
@@ -146,12 +178,22 @@ class _ScreenControllerState extends State<ScreenController> {
         physics: NeverScrollableScrollPhysics(),
         children: _screenPages);
 
+    getCoordenates().then((coord) async{
+      var adressess = await Geocoder.local.findAddressesFromCoordinates(Coordinates(coord.latitude,coord.longitude));
+      print(adressess.first.adminArea);//Estado
+      print(adressess.first.subAdminArea);//Cidade
+      print(adressess.first.addressLine);//Endereço Completo
+      print(adressess.first.countryName);//Nome do país
+      print(adressess.first.postalCode);//Cep
+
+    });
     return Scaffold(
         backgroundColor: Colors.white,
         drawer: CustomDrawer(_pageController, _screenPages),
         body: DoubleBackToCloseApp(
           child: _pages,
-          snackBar: const SnackBar(duration: Duration(seconds: 1),
+          snackBar: const SnackBar(
+            duration: Duration(seconds: 1),
             backgroundColor: Colors.black54,
             content: Text(
               'Pressione "voltar" mais uma vez para sair!',

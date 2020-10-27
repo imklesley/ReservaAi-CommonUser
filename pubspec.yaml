@@ -54,6 +54,10 @@ dependencies:
   flutter_typeahead: ^1.8.8
   carousel_pro: ^1.0.0
   double_back_to_close_app: ^1.2.0
+  flutter_material_pickers: ^1.7.4
+  flare_flutter: ^2.0.6
+  geocoder: ^0.2.1
+  location: ^3.0.0
 
 
 
@@ -63,7 +67,7 @@ flutter_icons:
   android: true
   ios: true
   image_path: "assets/images/logotypes/icon_launcher/brand400x400.png"
-  adaptive_icon_background: "05293c"
+  adaptive_icon_background: "#FFFFFF"
 
 
 flutter_launcher_name:
@@ -99,6 +103,10 @@ flutter:
     - assets/images/logotypes/branco-laranja.png
     - assets/images/app_bar_image/sliverappbar_restaurant.jpg
     - assets/fake_data/images/
+    - assets/animations/done_check.flr2d
+    - assets/fake_data/stories/top_search_page.png
+    - assets/fake_data/stories/top_search_page.gif
+    - assets/images/logotypes/icon_launcher/brand400x400.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

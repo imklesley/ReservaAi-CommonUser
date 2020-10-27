@@ -6,11 +6,54 @@ import 'package:reserva_ai_common_user/screens/widgets/general_filters.dart';
 import 'get_data.dart';
 
 class SearchPage extends StatefulWidget {
+
+  String whereCame;
+
+  SearchPage(this.whereCame);
+
+
   @override
-  _SearchPageState createState() => _SearchPageState();
+  _SearchPageState createState() => _SearchPageState(whereCame);
 }
 
 class _SearchPageState extends State<SearchPage> {
+
+  String whereCame;
+  _SearchPageState(this.whereCame);
+
+
+
+  List<Map<String, dynamic>> categories = [
+    {
+      'name': 'Promoções',
+      'image': 'assets/fake_data/images/academia.jpeg',
+    },
+    {
+      'name': 'Salões',
+      'image': 'assets/fake_data/images/salon.jpg',
+    },
+    {
+      'name': 'Academia',
+      'image': 'assets/fake_data/images/academia.jpeg',
+    },
+    {
+      'name': 'Restaurantes',
+      'image': 'assets/fake_data/images/restaurant.jpg',
+    },
+    {
+      'name': 'Academia',
+      'image': 'assets/fake_data/images/academia.jpeg',
+    },
+    {
+      'name': 'Salões',
+      'image': 'assets/fake_data/images/salon.jpg',
+    },
+    {
+      'name': 'Restaurantes',
+      'image': 'assets/fake_data/images/restaurant.jpg',
+    },
+  ];
+  List<String> buscasRecentes = ['Restaurante Klesliano','Salão Jacundesse','Academia Marobeiros'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,8 +63,12 @@ class _SearchPageState extends State<SearchPage> {
             color: Colors.white,
           ),
           Container(
+            decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor,
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(30),
+                    bottomRight: Radius.circular(30))),
             height: 190,
-            color: Theme.of(context).primaryColor,
           ),
           Container(
             color: Colors.transparent,
@@ -29,25 +76,36 @@ class _SearchPageState extends State<SearchPage> {
             child: Padding(
               padding: const EdgeInsets.fromLTRB(25, 110, 25, 5),
               child: TypeAheadField(
-
                 hideOnEmpty: true,
                 textFieldConfiguration: TextFieldConfiguration(
-                  textAlign: TextAlign.center,
+                    textAlign: TextAlign.center,
                     autofocus: false,
-                    style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.w600,),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                    ),
                     cursorColor: Colors.white,
-                    decoration: InputDecoration(suffixIcon: Icon(Icons.search,color: Colors.white,),
+                    decoration: InputDecoration(
+                      suffixIcon: Icon(
+                        Icons.search,
+                        color: Colors.white,
+                      ),
                       labelText: 'Pesquisar',
-                      labelStyle: TextStyle(decoration: TextDecoration.none,
+                      labelStyle: TextStyle(
+                          decoration: TextDecoration.none,
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 20),
                       border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),borderRadius: BorderRadius.circular(50)),
+                          borderSide: BorderSide(color: Colors.white),
+                          borderRadius: BorderRadius.circular(20)),
                       enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),borderRadius: BorderRadius.circular(50)),
+                          borderSide: BorderSide(color: Colors.white),
+                          borderRadius: BorderRadius.circular(20)),
                       focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),borderRadius: BorderRadius.circular(50)),
+                          borderSide: BorderSide(color: Colors.white),
+                          borderRadius: BorderRadius.circular(20)),
                     )),
                 suggestionsCallback: (pattern) async {
                   return await BackendService.getSuggestions(pattern);
@@ -68,12 +126,19 @@ class _SearchPageState extends State<SearchPage> {
           Positioned(
             top: 31,
             left: 4,
-            child: IconButton(
+            child: whereCame == 'tab'?IconButton(
               color: Colors.white,
               icon: FaIcon(FontAwesomeIcons.bars),
               iconSize: 25.0,
               onPressed: () {
                 Scaffold.of(context).openDrawer();
+              },
+            ):IconButton(
+              color: Colors.white,
+              icon: Icon(Icons.arrow_back_ios_rounded),
+              iconSize: 25.0,
+              onPressed: () {
+                Navigator.pop(context);
               },
             ),
           ),
@@ -89,47 +154,88 @@ class _SearchPageState extends State<SearchPage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(20, 10, 20, 5),
+            padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
             child: Column(
               children: [
                 SizedBox(
                   height: 200,
                 ),
-                GeneralFilters(),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 20,right: 240,top: 15),
-                  child: Text('Categorias',style: TextStyle(color: Theme.of(context).primaryColor,fontSize: 20,fontWeight: FontWeight.w600),textAlign: TextAlign.center,),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                    padding:
+                    const EdgeInsets.only(bottom: 15, top: 20),
+                    child: Text(
+                      'Buscas Recentes',
+                      style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontSize: 22,
+                          fontWeight: FontWeight.w600),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      height: 60,
-                      width: 60,
-                      decoration: BoxDecoration( color: Theme.of(context).primaryColor,borderRadius: BorderRadius.circular(12)),
-                      child: FlatButton(child:Icon(Icons.fastfood,color: Colors.white,),color: Colors.transparent,onPressed: (){},highlightColor: Theme.of(context).primaryColor,)
-                    ),
-                    Container(
-                        height: 60,
-                        width: 60,
-                        decoration: BoxDecoration( color: Theme.of(context).primaryColor,borderRadius: BorderRadius.circular(12)),
-                        child: FlatButton(child:Icon(Icons.stars,color: Colors.white,),color: Colors.transparent,onPressed: (){},highlightColor: Theme.of(context).primaryColor,)
-                    ),
-                    Container(
-                        height: 60,
-                        width: 60,
-                        decoration: BoxDecoration( color: Theme.of(context).primaryColor,borderRadius: BorderRadius.circular(12)),
-                        child: FlatButton(child:Icon(Icons.transfer_within_a_station,color: Colors.white,),color: Colors.transparent,onPressed: (){},highlightColor: Theme.of(context).primaryColor,)
-                    ),
-                    Container(
-                        height: 60,
-                        width: 60,
-                        decoration: BoxDecoration( color: Theme.of(context).primaryColor,borderRadius: BorderRadius.circular(12)),
-                        child: FlatButton(child:Icon(Icons.fastfood,color: Colors.white,),color: Colors.transparent,onPressed: (){},highlightColor: Theme.of(context).primaryColor,)
-                    ),
+                Column(children: buscasRecentes.map((busca) => ListTile(leading: Icon(Icons.settings_backup_restore),title: Text(busca),)).toList(),),
 
-                  ],
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.only(bottom: 15, top: 20),
+                    child: Text(
+                      'Categorias',
+                      style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontSize: 22,
+                          fontWeight: FontWeight.w600),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
                 ),
+                Expanded(
+                  child: GridView.count(
+                    childAspectRatio: 2,
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
+
+                    children: categories
+                        .map(
+                          (category) => SizedBox(
+                            height: 80,
+                            width: 160,
+                            child: Stack(
+                              children: [
+                                ClipRRect(
+                                    borderRadius: BorderRadius.circular(12),
+                                    child: Image.asset(
+                                      category['image'],
+                                      fit: BoxFit.cover,
+                                      width: double.infinity,
+                                      height: double.infinity,
+
+                                    )),
+                                Container(
+                                  decoration: BoxDecoration(
+                                      color: Color.fromRGBO(0, 0, 0, 0.3),
+                                      borderRadius: BorderRadius.circular(12)),
+                                ),
+                                Center(
+                                  child: Text(
+                                    category['name'],
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        )
+                        .toList(),
+                  ),
+                )
               ],
             ),
           )

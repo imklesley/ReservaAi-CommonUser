@@ -22,6 +22,12 @@ class MyApp extends StatelessWidget {
     // to hide both:
     //SystemChrome.setEnabledSystemUIOverlays([]);
 
+    //Para setar a orientação do dispositivo em portrait
+    // SystemChrome.setPreferredOrientations([
+    //   DeviceOrientation.portraitUp,
+    //   DeviceOrientation.portraitDown
+    // ]);
+
     return ScopedModel(
         model: UserModel(),
         child: ScopedModelDescendant<UserModel>(
@@ -32,10 +38,10 @@ class MyApp extends StatelessWidget {
               home: ScreenController(),
               theme: ThemeData(
                 fontFamily: 'Montserrat',
-                primaryColor: Color.fromRGBO(5, 41, 60, 1),
+                primaryColor: Color(0xFF05293C),
                 primarySwatch: Colors.deepOrange,
-                cursorColor: Color.fromRGBO(5, 41, 60, 1),
-
+                cursorColor: Color(0xFF05293C),
+                highlightColor: Color(0xFFFD5B3E),
               ),
             );
           },

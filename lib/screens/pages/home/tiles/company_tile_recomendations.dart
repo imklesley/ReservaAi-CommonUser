@@ -94,7 +94,7 @@ class CompanyTilePromotions extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 8.0),
                         child: Text(
                           companyName,
-                          overflow: TextOverflow.fade,
+                          overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 17,

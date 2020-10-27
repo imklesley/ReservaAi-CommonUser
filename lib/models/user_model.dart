@@ -97,18 +97,19 @@ class UserModel extends Model {
   }
 
   Future<Null> _loadCurrentUser() async {
-    if (firebaseUser == null) firebaseUser = await _auth.currentUser();
+    if (firebaseUser == null) {
+      firebaseUser = await _auth.currentUser();
+    }
     if (firebaseUser != null) {
       if (userData['name'] == null) {
         DocumentSnapshot docUser = await Firestore.instance
-            .collection('users')
+            .collection('consumer_user')
             .document(firebaseUser.uid)
             .get();
 
         userData = docUser.data;
       }
     }
-
     notifyListeners();
   }
 }

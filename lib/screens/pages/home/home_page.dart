@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:reserva_ai_common_user/screens/pages/home/tiles/company_tile.dart';
-import 'package:reserva_ai_common_user/screens/pages/home/tiles/company_tile_promotions.dart';
+import 'package:reserva_ai_common_user/screens/pages/home/tiles/company_tile_recomendations.dart';
 import 'package:reserva_ai_common_user/screens/pages/home/widgets/custom_sliver_appbar.dart';
 import 'package:reserva_ai_common_user/screens/widgets/general_filters.dart';
 
@@ -13,8 +13,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+
+
+
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: CustomScrollView(
         slivers: [
