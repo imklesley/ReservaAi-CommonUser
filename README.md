@@ -1,4 +1,4 @@
-# Reserva Aí! Mobile - Common User App - MOCK APPLICATION
+# Reserva Aí! Mobile - MOCK APPLICATION
 
 
 <p align="center">
