@@ -3,7 +3,7 @@
 Reserva Aí! is a mobile application that allows users to make reservations for different services in their city.
 
 <div align="center">
-  <video src="https://user-images.githubusercontent.com/26011999/223245155-9d04c49c-9ad7-4079-b20f-712158cab2e8.mp4" width=400 autoplay/>
+  <video src="https://user-images.githubusercontent.com/26011999/223245155-9d04c49c-9ad7-4079-b20f-712158cab2e8.mp4" width=400 autoplay="true"/>
 <div/>
   
   
