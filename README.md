@@ -1,7 +1,9 @@
 # Reserva Aí! Mobile - Common User App - MOCK APPLICATION
 
 <div align="center">
-  <img src="https://github.com/imklesley/ReservaAi-CommonUser/blob/866dd59a9bafda1b985b20319e8e3b30adfa323b/workingproject.gif" width=300 alt="Working application"/>
+
+  <img src="http://i.stack.imgur.com/SBv4T.gif" alt="this slowpoke moves"  width="250" />
+
 <div/>
 
   
