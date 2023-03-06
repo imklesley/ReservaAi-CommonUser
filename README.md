@@ -1,5 +1,10 @@
 # reserva_ai_common_user
 
+
+<p align="center">
+  https://user-images.githubusercontent.com/26011999/223245155-9d04c49c-9ad7-4079-b20f-712158cab2e8.mp4
+</p>
+
 App de reservas. Startup Reserva ai
 
 ## Getting Started
@@ -19,5 +24,5 @@ samples, guidance on mobile development, and a full API reference.
 
 
 
-https://user-images.githubusercontent.com/26011999/223245155-9d04c49c-9ad7-4079-b20f-712158cab2e8.mp4
+
 
