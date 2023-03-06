@@ -1,7 +1,8 @@
 # Reserva Aí! Mobile - Common User App -- MOCK APPLICATION
 
-<video src="https://user-images.githubusercontent.com/26011999/223245155-9d04c49c-9ad7-4079-b20f-712158cab2e8.mp4" width=400 controls autoplay/>
-
+<div align="center">
+  <video src="https://user-images.githubusercontent.com/26011999/223245155-9d04c49c-9ad7-4079-b20f-712158cab2e8.mp4" width=400 controls autoplay/>
+<div/>
   
 Reserva Aí! is an application that allows users to easily make reservations for different services in their city. Find the perfect spot for dinner, book a spa day, or reserve a spot for a much needed getaway - Reserva Aí! has you covered!
 
