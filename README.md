@@ -18,7 +18,7 @@ samples, guidance on mobile development, and a full API reference.
 
 
 <video width="320" height="240" controls>
-  <source src="[movie.mp4](https://user-images.githubusercontent.com/26011999/223244378-ed862245-bd78-460c-b30e-02ab65a6a023.mp4)" type="video/mp4">
+  <source src="https://user-images.githubusercontent.com/26011999/223244378-ed862245-bd78-460c-b30e-02ab65a6a023.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
