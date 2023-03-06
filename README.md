@@ -17,8 +17,7 @@ samples, guidance on mobile development, and a full API reference.
 "# ReservaAi-CommonUser" 
 
 
-<video width="320" height="240" controls>
-  <source src="https://user-images.githubusercontent.com/26011999/223244378-ed862245-bd78-460c-b30e-02ab65a6a023.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+
+
+https://user-images.githubusercontent.com/26011999/223245155-9d04c49c-9ad7-4079-b20f-712158cab2e8.mp4
 
