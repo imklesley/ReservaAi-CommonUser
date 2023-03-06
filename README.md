@@ -1,29 +1,43 @@
-# Reserva Aí! Mobile - Common User App
+# Reserva Aí! Mobile - Common User App -- MOCK APPLICATION
 
-Reserva Aí! is a mobile application that allows users to make reservations for different services in their city.
+Reserva Aí! is an application that allows users to easily make reservations for different services in their city. Find the perfect spot for dinner, book a spa day, or reserve a spot for a much needed getaway - Reserva Aí! has you covered!
 
 <div align="center">
   <video src="https://user-images.githubusercontent.com/26011999/223245155-9d04c49c-9ad7-4079-b20f-712158cab2e8.mp4" width=400 controls autoplay/>
 <div/>
   
   
+## Features
 
-App de reservas. Startup Reserva ai
+Reserva Aí! offers the following features:
 
+- Search: Allows users to search for services in their city by category.
+- My Books: Manages all of the user's reservations.
+- Notifications: Receive notifications about upcoming reservations.
+- User Page: Manage user profile information.
+- Home Screen: A beautiful home screen with the latest offers.  
+  
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This section will cover the steps to get the application running on your device.
 
-A few resources to get you started if this is your first Flutter project:
+### Prerequisites
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Before you can run the application, you must have the following installed:
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-"# ReservaAi-CommonUser" 
+- Flutter SDK
+- Android Studio or Xcode
 
+### Installation
+
+1. Clone the repository: `git clone https://github.com/imklesley/ReservaAi-CommonUser`
+2. Navigate to the project directory: `cd ReservaAi-CommonUser`
+3. Install the dependencies: `flutter packages get`
+4. Run the application: `flutter run`
+
+##
+
+<p align="center">Developed by <span color="#007DFF" >Klesley Gonçalves</span></p>
 
 
 
